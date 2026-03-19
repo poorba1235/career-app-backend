@@ -8,10 +8,9 @@ const jwt = require('jsonwebtoken');
 const Sentiment = require('sentiment');
 const Interview = require('../models/Interview');
 const { toFile } = require('openai');
-const natural = require('natural');
 const readabilityMeter = require('readability-meter');
 
-const tokenizer = new natural.WordTokenizer();
+
 const upload = multer({ storage: multer.memoryStorage() });
 const sentimentAnalyzer = new Sentiment();
 const openai = new OpenAI({
@@ -90,7 +89,7 @@ const analyzeConfidenceMarkers = (text) => {
     const strongWords = new Set(['definitely', 'absolutely', 'clearly', 'expert', 'achieved', 'led', 'delivered', 'proven', 'thrive', 'excellent', 'passionate', 'ensure', 'manage', 'execute', 'strong']);
     const weakWords = new Set(['maybe', 'guess', 'something', 'kind of', 'sort of', 'perhaps', 'hope', 'try', 'think so', 'basically', 'actually', 'just']);
 
-    const tokens = tokenizer.tokenize(text.toLowerCase()) || [];
+    const tokens = (text.toLowerCase().match(/\b\w+\b/g) || []);
     let strengthScore = 0;
 
     tokens.forEach(token => {
@@ -133,7 +132,7 @@ const analyzeTranscriptMetrics = (transcript) => {
         return { confidence: 0, communication: 0 };
     }
 
-    const words = tokenizer.tokenize(candidateSpeechOnly.toLowerCase()) || [];
+    const words = (candidateSpeechOnly.toLowerCase().match(/\b\w+\b/g) || []);
     const totalWords = words.length;
 
     if (totalWords === 0) return { confidence: 0, communication: 0 };
