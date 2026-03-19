@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "axios": "^1.13.5",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.4",
+    "express": "^5.2.1",
+    "firebase": "^12.10.0",
+    "form-data": "^4.0.5",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.1.6",
+    "multer": "^2.0.2",
+<<<<<<< HEAD
+    "natural": "^8.1.1",
+=======
+>>>>>>> 628549181a4f9a1e6fc5d6c582931453897673e0
+    "nodemailer": "^8.0.1",
+    "openai": "^6.18.0",
+    "pdf-parse": "^1.1.1",
+    "pdfkit": "^0.17.2",
+<<<<<<< HEAD
+    "readability-meter": "^1.0.0",
+=======
+>>>>>>> 628549181a4f9a1e6fc5d6c582931453897673e0
+    "sentiment": "^5.0.2"
+  }
+}
